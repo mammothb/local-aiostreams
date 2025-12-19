@@ -6,7 +6,7 @@ services:
     container_name: aiolists
     restart: unless-stopped
     expose:
-      - 7000:7890
+      - 7000
     env_file:
       - .env
     profiles:
