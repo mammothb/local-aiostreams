@@ -1,0 +1,13 @@
+services:
+  aiolists:
+    build:
+      context: https://github.com/SebastianMorel/AIOLists.git
+      dockerfile: Dockerfile
+    container_name: aiolists
+    restart: unless-stopped
+    expose:
+      - 7000:7890
+    env_file:
+      - .env
+    profiles:
+      - required

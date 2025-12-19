@@ -1,17 +1,7 @@
-services:
-  aiostreams:
-    image: ghcr.io/viren070/aiostreams:latest
-    container_name: aiostreams
-    restart: unless-stopped
-    ports:
-      - 3456:3456
-    env_file:
-      - .env
-    volumes:
-      - ./data:/app/data
-    healthcheck:
-      test: wget -qO- http://localhost:3000/api/v1/status
-      interval: 1m
-      timeout: 10s
-      retries: 5
-      start_period: 10s
+include:
+  - apps/aiolists/compose.yaml
+  - apps/aiostreams/compose.yaml
+networks:
+  default:
+    name: ${DOCKER_NETWORK:-aio_default}
+    external: ${DOCKER_NETWORK_EXTERNAL:-false}
