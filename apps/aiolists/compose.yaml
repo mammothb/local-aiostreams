@@ -5,8 +5,8 @@ services:
       dockerfile: Dockerfile
     container_name: aiolists
     restart: unless-stopped
-    expose:
-      - 7000
+    ports:
+      - 7000:7000
     env_file:
       - .env
     profiles:
