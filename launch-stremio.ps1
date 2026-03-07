@@ -2,7 +2,12 @@ $dockerPath = "C:\Program Files\Docker\Docker\Docker Desktop.exe"
 Start-Process $dockerPath
 
 Write-Host "Waiting for Docker to start..."
-while (-not (docker info 2>$null)) {
+while ($true) {
+    $output = docker ps 2>&1
+    if ($output -notmatch "failed to connect") {
+        Write-Host "Docker is ready!" -ForegroundColor Green
+        break
+    }
     Start-Sleep -Seconds 3
 }
 
