@@ -1,14 +1,20 @@
 services:
   stremio_server:
-    image: stremio/server:latest
+    image: tsaridas/stremio-docker:latest
     container_name: stremio_server
     restart: unless-stopped
     ports:
-      - 11470:11470
-      - 12470:12470
+      - 8080:8080
     env_file:
       - .env
     volumes:
       - ${DOCKER_DATA_DIR}/stremio_server:/root/.stremio-server
+    runtime: nvidia
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8080 || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     profiles:
       - required

@@ -15,3 +15,5 @@ $composeDir = "D:\GitRepos\local-aiostreams"
 Set-Location $composeDir
 
 docker compose up -d
+
+Start-Process "C:\Users\Admin\AppData\Local\Programs\StremioService\stremio-service.exe" --skip-updater
