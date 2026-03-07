@@ -1,6 +1,7 @@
 include:
   - apps/aiolists/compose.yaml
   - apps/aiostreams/compose.yaml
+  - apps/stremio_server/compose.yaml
 networks:
   default:
     name: ${DOCKER_NETWORK:-aio_default}

@@ -1,0 +1,14 @@
+services:
+  stremio_server:
+    image: stremio/server:latest
+    container_name: stremio_server
+    restart: unless-stopped
+    ports:
+      - 11470:11470
+      - 12470:12470
+    env_file:
+      - .env
+    volumes:
+      - ${DOCKER_DATA_DIR}/stremio_server:/root/.stremio-server
+    profiles:
+      - required
